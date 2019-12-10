@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Generate deployment package
-      run: zip deploy.zip *.js *.json *.html *.css
+      run: zip deploy.zip *
       
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v3
@@ -22,6 +22,6 @@ jobs:
         aws_secret_key: ${{ secrets.Secret_key }}
         application_name: eb-github
         environment_name:  EbGithub-env
-        version_label: 3
+        version_label: 4
         region: us-east-1
         deployment_package: deploy.zip
