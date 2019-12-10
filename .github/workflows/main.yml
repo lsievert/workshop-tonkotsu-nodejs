@@ -20,8 +20,8 @@ jobs:
       with:
         aws_access_key: ${{ secrets.Access_Key }}
         aws_secret_key: ${{ secrets.Secret_key }}
-        application_name: MyApplicationName
-        environment_name: MyApplication-Environment
-        version_label: 12345
+        application_name: eb-github
+        environment_name:  EbGithub-env
+        version_label: 2
         region: us-east-1
         deployment_package: deploy.zip
