@@ -1,0 +1,27 @@
+name: Deploy dev
+on:
+  push:
+    branches-ignore:
+    - master
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout source code
+      uses: actions/checkout@v1
+
+    - name: Generate deployment package
+      run: zip -r deploy.zip *
+      
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v3
+      with:
+        aws_access_key: ${{ secrets.Access_Key }}
+        aws_secret_key: ${{ secrets.Secret_key }}
+        application_name: eb-github
+        environment_name: EbGithub-env
+        version_label: ${{ github.sha }}
+        region: us-east-1
+        deployment_package: deploy.zip
