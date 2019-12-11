@@ -22,6 +22,6 @@ jobs:
         aws_secret_key: ${{ secrets.Secret_key }}
         application_name: eb-github
         environment_name:  prod
-        version_label: 1
+        version_label: 2
         region: us-east-1
         deployment_package: deploy.zip
